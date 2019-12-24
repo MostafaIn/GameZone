@@ -1,18 +1,19 @@
 import React from 'react'
-import { StyleSheet,View, Text } from 'react-native'
+import { View, Text, Button } from 'react-native'
+import {globalStyles} from '../styles/global'
 
-const ReviewDetails = () => {
+
+const ReviewDetails = ({navigation}) => {
+
+    const hadleBack =()=>{
+        navigation.goBack();
+    }
     return (
-        <View style={styles.container}>
-            <Text>this is Review Details screen.</Text>
+        <View style={globalStyles.container}>
+            <Text style={globalStyles.titleText}>this is Review Details screen.</Text>
+            <Button title=' <- go back' onPress={hadleBack} />
         </View>
     )
 }
 
 export default ReviewDetails;
-
-const styles = StyleSheet.create({
-    container:{
-        padding: 140,
-    }
-})

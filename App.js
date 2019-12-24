@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
-import * as Font from 'expo-font'
+import * as Font from 'expo-font';
+import Navigator from './routes/homeStack'
 
-import Home from './screens/Home';
 import { AppLoading } from 'expo';
 
 
@@ -14,7 +14,7 @@ export default function App() {
    
   if(fontLoaded){
     return(
-      <Home />
+      <Navigator />
     )
   }else{
   return(
