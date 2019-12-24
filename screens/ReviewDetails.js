@@ -10,8 +10,9 @@ const ReviewDetails = ({navigation}) => {
     }
     return (
         <View style={globalStyles.container}>
-            <Text style={globalStyles.titleText}>this is Review Details screen.</Text>
-            <Button title=' <- go back' onPress={hadleBack} />
+           <Text>TITLE: </Text><Text style={globalStyles.titleText}>{navigation.getParam('title')}</Text>
+           <Text>BODY: </Text><Text style={globalStyles.titleText}>{navigation.getParam('body')}</Text>
+           <Text>RATING: </Text><Text style={globalStyles.titleText}>{navigation.getParam('rating')}</Text>
         </View>
     )
 }
