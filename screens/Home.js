@@ -4,11 +4,11 @@ import {globalStyles} from '../styles/global'
 
 const Home = ({navigation}) =>{
     const [reviews,setReview]=useState([
-        {title:'HONDA',rating:3,body:'car',id:'1'},
-        {title:'MAZDA',rating:3,body:'car',id:'2'},
-        {title:'NIISAN',rating:4,body:'car',id:'3'},
-        {title:'TOYOTA',rating:5,body:'car',id:'4'},
-        {title:'MITSUBISHI',rating:5,body:'car',id:'5'},
+        {name:'Mostafa',age:35,email:'mosi@gmail.com',id:'1'},
+        {name:'Rohafza',age:33,email:'rohy@hotmail.com',id:'2'},
+        {name:'Morteza',age:32,email:'mori@yahoo.com',id:'3'},
+        {name:'Edriis',age:32,email:'edi@live.com',id:'4'},
+        {name:'Farzana',age:30,email:'feri@gmail.com',id:'5'},
     ]);
     
     return(
@@ -19,7 +19,7 @@ const Home = ({navigation}) =>{
                 data={reviews}
                 renderItem={({ item }) => (
                     <TouchableOpacity onPress={()=> navigation.navigate('ReviewDetails', item)} style={{marginVertical:20}}>
-                        <Text style={globalStyles.titleText}>{ item.title }</Text>
+                        <Text style={globalStyles.titleText}>{ item.name }</Text>
                     </TouchableOpacity>
                 )}
                 keyExtractor={item => item.id}
