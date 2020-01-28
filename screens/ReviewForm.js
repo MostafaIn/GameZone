@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TextInput, Button, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { View, Text, TextInput, KeyboardAvoidingView } from 'react-native'
 import {globalStyles} from '../styles/global'
 
 import {Formik} from 'formik'
@@ -18,7 +18,11 @@ const reviewSchema = yup.object({
 
 const ReviewForm = ({addReview}) => {
     return (
-        <View style={globalStyles.container}>
+        <KeyboardAvoidingView 
+        behavior="padding" 
+        style={globalStyles.container} 
+        >
+        <View>
             <Formik
                 initialValues={{ name:'', age:'', email:'', rating:''}}
                 validationSchema={reviewSchema}
@@ -68,6 +72,7 @@ const ReviewForm = ({addReview}) => {
                 )}
             </Formik>
         </View>
+        </KeyboardAvoidingView>
     )
 }
 

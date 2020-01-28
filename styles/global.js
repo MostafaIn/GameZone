@@ -27,8 +27,7 @@ export const globalStyles = StyleSheet.create({
        alignSelf:'center' 
     },
     modalClose:{
-        marginTop:175,
-        marginBottom:0,
+        marginTop:75,
         color:'red'
     },
     input:{
