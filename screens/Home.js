@@ -1,14 +1,15 @@
 import React,{useState} from 'react'
-import {View, Text, FlatList,TouchableOpacity, Modal } from 'react-native'
+import {View, Text, FlatList,TouchableOpacity, Modal, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import {globalStyles} from '../styles/global'
 import Card from '../shared/Card';
 
 import { MaterialIcons } from '@expo/vector-icons'
+import ReviewForm from './ReviewForm';
 
 const Home = ({navigation}) =>{
 
     const [modal,setModal] = useState(false);
-    const [reviews,setReview]=useState([
+    const [reviews,setReviews]=useState([
         {name:'Mostafa',age:35,email:'mosi@gmail.com',rating:'5',id:'1'},
         {name:'Rohafza',age:33,email:'rohy@hotmail.com',rating:'4',id:'2'},
         {name:'Morteza',age:32,email:'mori@yahoo.com',rating:'3',id:'3'},
@@ -16,9 +17,18 @@ const Home = ({navigation}) =>{
         {name:'Farzana',age:30,email:'feri@gmail.com',rating:'1',id:'5'},
     ]);
     
+    const addReview = review =>{
+        review.key = Math.random().toString();
+        setReviews((currentReviews)=>{
+            return [review, ...currentReviews];
+        });
+        setModal(false)
+    }
+
     return(
         <View style={globalStyles.container}>
-            <Modal visible={modal} animationType="slide" >
+            <Modal visible={modal} animationType="slide">
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss()}>
                 <View style={globalStyles.modalContent}>
                     <MaterialIcons 
                     name="close" 
@@ -26,9 +36,9 @@ const Home = ({navigation}) =>{
                     onPress={() => setModal(false)} 
                     style={{ ...globalStyles.modalToggle, ...globalStyles.modalClose}}
                     />
-                    <Text style={{textAlign:'center'}}>Hello mostafa! :)</Text>
+                    <ReviewForm addReview={addReview} />
                 </View>
-                
+                </TouchableWithoutFeedback>
             </Modal>
             <MaterialIcons 
             name="add" 
