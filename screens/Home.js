@@ -1,9 +1,13 @@
 import React,{useState} from 'react'
-import {View, Text, FlatList,TouchableOpacity } from 'react-native'
+import {View, Text, FlatList,TouchableOpacity, Modal } from 'react-native'
 import {globalStyles} from '../styles/global'
 import Card from '../shared/Card';
 
+import { MaterialIcons } from '@expo/vector-icons'
+
 const Home = ({navigation}) =>{
+
+    const [modal,setModal] = useState(false);
     const [reviews,setReview]=useState([
         {name:'Mostafa',age:35,email:'mosi@gmail.com',rating:'5',id:'1'},
         {name:'Rohafza',age:33,email:'rohy@hotmail.com',rating:'4',id:'2'},
@@ -14,7 +18,24 @@ const Home = ({navigation}) =>{
     
     return(
         <View style={globalStyles.container}>
-            {/* {reviews.map( review => <Text style={globalStyles.titleText}>{review.title}</Text>)} */}
+            <Modal visible={modal} animationType="slide" >
+                <View style={globalStyles.modalContent}>
+                    <MaterialIcons 
+                    name="close" 
+                    size={24} 
+                    onPress={() => setModal(false)} 
+                    style={{ ...globalStyles.modalToggle, ...globalStyles.modalClose}}
+                    />
+                    <Text style={{textAlign:'center'}}>Hello mostafa! :)</Text>
+                </View>
+                
+            </Modal>
+            <MaterialIcons 
+            name="add" 
+            size={24} 
+            onPress={() => setModal(true)}
+            style={globalStyles.modalToggle}
+            />
             
             <FlatList
                 data={reviews}

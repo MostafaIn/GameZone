@@ -14,6 +14,22 @@ export const globalStyles = StyleSheet.create({
     para:{
         marginVertical:8,
         lineHeight:20
+    },
+    modalContent:{
+        flex:1
+    },
+    modalToggle:{
+       marginBottom: 10,
+       borderWidth:1,
+       borderColor:'#f2f2f2',
+       padding:10,
+       borderRadius:10,
+       alignSelf:'center' 
+    },
+    modalClose:{
+        marginTop:175,
+        marginBottom:0,
+        color:'red'
     }
 });
 
