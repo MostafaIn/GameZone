@@ -1,4 +1,4 @@
-import {createStackNavigator} from 'react-navigation-stack'
+ import {createStackNavigator} from 'react-navigation-stack'
 
 import Home from '../screens/Home';
 import ReviewDetails from '../screens/ReviewDetails';
@@ -27,6 +27,8 @@ const screens = {
 const homeStack = createStackNavigator(screens,{
     defaultNavigationOptions:{
        headerStyle:{
+        position:'fixed',
+        bottom:0,
         backgroundColor:'#cdc',
         height: 60
        } 
