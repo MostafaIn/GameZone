@@ -4,6 +4,7 @@ import {globalStyles} from '../styles/global'
 
 import {Formik} from 'formik'
 import * as yup from 'yup'
+import FlatButton from './FlatButton'
 
 const reviewSchema = yup.object({
     name: yup.string().required().min(4),
@@ -62,11 +63,7 @@ const ReviewForm = ({addReview}) => {
                         />
                         <Text style={globalStyles.errorTxt}>{props.touched.rating && props.errors.rating}</Text>
 
-                        <Button
-                            title="SUBMIT"
-                            color="maroon"
-                            onPress={props.handleSubmit}
-                        />
+                        <FlatButton text="submit" onPress={props.handleSubmit} />
                     </View>
                 )}
             </Formik>
