@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, TextInput, Button } from 'react-native'
+import { View, Text, TextInput, Button, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import {globalStyles} from '../styles/global'
 
 import {Formik} from 'formik'
@@ -7,10 +7,8 @@ import * as yup from 'yup'
 
 const reviewSchema = yup.object({
     name: yup.string().required().min(4),
-    email: yup.string().required().min(4),
-    age: yup.string().required().test('is-age-18-65' , 'you must between 18 - 65', (val)=>{
-        return parseInt(val) < 66 && parseInt(val) > 17;
-    }),
+    email: yup.string().required().email(),
+    age: yup.number().min(18).required().positive().integer(),
     rating: yup.string().required().test('is-num-1-5', 'Rating must be a number 1 - 5', (val)=>{
         return parseInt(val) < 6 && parseInt(val) > 0;
     }),
@@ -36,6 +34,8 @@ const ReviewForm = ({addReview}) => {
                             onChangeText={props.handleChange('name')}
                             value={props.values.name}
                         />
+                        <Text style={globalStyles.errorTxt}>{props.touched.name && props.errors.name}</Text>
+                        
                         <TextInput
                             style={globalStyles.input}
                             placeholder="Your Age"
@@ -43,12 +43,16 @@ const ReviewForm = ({addReview}) => {
                             value={props.values.age}
                             keyboardType="numeric"
                         />
+                        <Text style={globalStyles.errorTxt}>{props.touched.age && props.errors.age}</Text>
+
                         <TextInput
                             style={globalStyles.input}
                             placeholder="Your Email"
                             onChangeText={props.handleChange('email')}
                             value={props.values.email}
                         />
+                        <Text style={globalStyles.errorTxt}>{props.touched.email && props.errors.email}</Text>
+
                         <TextInput
                             style={globalStyles.input}
                             placeholder="Rating (1 - 5)"
@@ -56,6 +60,8 @@ const ReviewForm = ({addReview}) => {
                             value={props.values.rating}
                             keyboardType="numeric"
                         />
+                        <Text style={globalStyles.errorTxt}>{props.touched.rating && props.errors.rating}</Text>
+
                         <Button
                             title="SUBMIT"
                             color="maroon"

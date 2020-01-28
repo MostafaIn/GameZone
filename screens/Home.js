@@ -28,7 +28,7 @@ const Home = ({navigation}) =>{
     return(
         <View style={globalStyles.container}>
             <Modal visible={modal} animationType="slide">
-                <TouchableWithoutFeedback onPress={Keyboard.dismiss()}>
+                <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
                 <View style={globalStyles.modalContent}>
                     <MaterialIcons 
                     name="close" 
