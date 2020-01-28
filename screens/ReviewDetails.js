@@ -1,9 +1,10 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-import {globalStyles} from '../styles/global'
+import { View, Text, Image } from 'react-native'
+import {globalStyles, Images} from '../styles/global'
 import Card from '../shared/Card'
 
 const ReviewDetails = ({navigation}) => {
+    const rating = navigation.getParam('rating');
 
     const hadleBack =()=>{
         navigation.goBack();
@@ -14,6 +15,7 @@ const ReviewDetails = ({navigation}) => {
            <Text>NAME: </Text><Text style={globalStyles.titleText}>{navigation.getParam('name')}</Text>
            <Text>AGE: </Text><Text style={globalStyles.titleText}>{navigation.getParam('age')}</Text>
            <Text>EMAIL: </Text><Text style={globalStyles.titleText}>{navigation.getParam('email')}</Text>
+           <Image source={Images.ratings[rating]} />
            </Card>
         </View>
     )
